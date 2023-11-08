@@ -33,6 +33,20 @@ class AviaSoulsTest {
     }
 
     @Test
+    public void shouldNotFindAnyTicket() {
+        Ticket[] expected = { };
+        Ticket[] actual = aviaSouls.search("Петрозаводск", "Владивосток");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindOneTicket() {
+        Ticket[] expected = { ticket2 };
+        Ticket[] actual = aviaSouls.search("Петрозаводск", "Москва");
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldFindThreeTicketAndSortResultByDefault() {
         Ticket[] expected = { ticket6, ticket4, ticket1, ticket5 };
         Ticket[] actual = aviaSouls.search("Москва", "Ереван");
